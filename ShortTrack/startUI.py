@@ -25,10 +25,9 @@ def opendir():
     root.withdraw()
     #동영상이 있는 폴더 실행
     #폴더가 아닌 파일을 하고 싶은 경우 filedialog.askopenfilename()
-    dir_path = filedialog.askdirectory(parent=root,initialdir='./',title='Please select a video')
-    print("\ndir_path : ", dir_path)
+    video_path = filedialog.askopenfilename(parent=root,initialdir='./ShortTrack',title='Please select a video')
     #fame_divide로 동영상 파일 넘긴뒤 실행
-    count,imagePath = frame_divide.frame_divide(dir_path+"/")
+    count,imagePath = frame_divide.frame_divide(video_path)
     print("Finish divide")
     
     #하이라이트 실행
@@ -36,10 +35,10 @@ def opendir():
     print("highlight")
 
     #merge실행
-    frame_merge.frame_merge(imagePath)
+    #frame_merge.frame_merge(imagePath)
 
     #폴더 열기
-    path_finish="./VideoFile_output"#결과창
+    path_finish="./ShortTrack/VideoFile_output"#결과창
     path = os.path.realpath(path_finish)
     os.startfile(path)
 
