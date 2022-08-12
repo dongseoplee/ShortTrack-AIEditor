@@ -27,9 +27,11 @@ def frame_divide(videoPath):
                         break
                     
                     if(int(cap.get(1)) % 30 == 0):#30이 1초
-                        cv2.imwrite(imagePath + file + "/frame%d.png" % count, image)
 
-                        print('%d.png done' % count)
+                        cv2.imwrite(imagePath + "/frame%d.jpg" % count, image)
+                        #cv2.imwrite(imagePath + file + "/frame%d.jpg" % count, image)
+
+                        print('%d.jpg done' % count)
                         count += 1
 
                 cap.release()
