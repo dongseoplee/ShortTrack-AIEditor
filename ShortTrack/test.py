@@ -3,7 +3,7 @@ from tkinter import filedialog
 import os
 import shutil
 import frame_divide
-import frame_merge
+#import frame_merge
 import highlight
 
 
@@ -36,6 +36,7 @@ def opendir():
 
     #merge실행
     frame_merge.frame_merge(video_path,total_score)
+
 
     #폴더 열기
     path_finish="./ShortTrack/VideoFile_output"#결과창
