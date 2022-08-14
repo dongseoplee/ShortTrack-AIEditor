@@ -31,14 +31,14 @@ def opendir():
     print("Finish divide")
     
     #하이라이트 실행
-    highlight.highlight(count)
-    print("highlight")
+    total_score=highlight.highlight(count)
+    print(total_score)
 
     #merge실행
-    #frame_merge.frame_merge(imagePath)
+    frame_merge.frame_merge(video_path,total_score)
 
     #폴더 열기
-    path_finish="./ShortTrack/VideoFile_output"#결과창
+    path_finish="./ShortTrack"#결과창
     path = os.path.realpath(path_finish)
     os.startfile(path)
 
