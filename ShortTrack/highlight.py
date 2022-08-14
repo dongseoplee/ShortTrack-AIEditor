@@ -10,5 +10,4 @@ def highlight(count):
     #score 종합
     for i in range(0,count): 
         total_score[i]=score_list[0][i]+score_list[1][i]+score_list[2][i]+score_list[3][i]
-    print(total_score)
     return total_score
