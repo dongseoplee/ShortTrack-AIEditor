@@ -1,6 +1,9 @@
+import shutil
 import cv2 #OpenCV fkdlqmfjfl
 import os   #파일 디렉토리 라이브러리
 import numpy as np
+from moviepy.editor import VideoFileClip
+
 
 def frame_merge(video,total_score):
     print(total_score)
@@ -19,7 +22,9 @@ def frame_merge(video,total_score):
     print('프레임 너비: %d, 프레임 높이: %d, 초당 프레임 수: %d' %(width, height, fps))
     
     fourcc = cv2.VideoWriter_fourcc(*'DIVX') # 코덱 정의
-    out = cv2.VideoWriter('otter_out.avi', fourcc, fps, (int(width), int(height))) # VideoWriter 객체 정의
+    #동영상 이름
+    output_name="output.avi"
+    out = cv2.VideoWriter(output_name, fourcc, fps, (int(width), int(height))) # VideoWriter 객체 정의
 
     count=0
     while cap.isOpened(): # cap 정상동작 확인
@@ -41,6 +46,7 @@ def frame_merge(video,total_score):
                 temp-=1
         count+=1
     # 작업 완료 후 해제
+
     cap.release()
     out.release()
     cv2.destroyAllWindows()
