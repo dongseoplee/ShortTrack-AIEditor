@@ -1,4 +1,4 @@
-import pytesseract
+#import pytesseract
 import cv2
 import matplotlib.pyplot as plt
 from google.cloud import vision
@@ -7,7 +7,11 @@ import os
 import ocr_image_cut
 
 #구글 vision api 코드
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:\googleCloudApiJson\shorttrack-ocr-f05377351806.json"
+#gram json 경로
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:\googleCloudApiJson\shorttrack-ocr-f05377351806.json"
+
+#MAC json 경롷
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/leedongseop/googleAPIjson/shorttrack-ocr-c1a61c47c944.json"
 client = vision.ImageAnnotatorClient()
 
 #잘려진 frame 이미지 ocr 인식하기
@@ -18,9 +22,9 @@ dir_path = 'cutted_images'
 file_list = os.listdir(dir_path)
 print(file_list)
 
+i = 0
 for fileName in file_list:
 
-    print("======================")
     path = 'cutted_images/' + fileName
     with io.open(path, 'rb') as image_file:
         content = image_file.read()
@@ -29,13 +33,33 @@ for fileName in file_list:
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
-    print('Texts:')
+
 
     for text in texts:
         content = text.description
-        content = content.replace(',','')
+        #print(content) #단어별로 끊어서 출력
+
+        #ocr결과에 최민정이 있으면 ocr 결과 출력
+        if "최민정" in content:
+            print("======================", fileName, "======================")
+            print('Texts:')
+            print(content)
+
+        '''
+        content = content.replace(',','') #json 형식 보기 쉽게 하려고 만든 코드
         print(content)
-        #print('\n"{}"'.format(content))
+        print('\n"{}"'.format(content)) #json 형식 보기 쉽게 하려고 만든 코드
+        '''
+#test
+
+
+
+
+
+
+
+
+
 
 
 ''' pytesseract 코드

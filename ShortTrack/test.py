@@ -7,7 +7,7 @@ import frame_merge
 import highlight
 import ocr
 
-ocr.ocr_google()
+#ocr.ocr_google()
 
 window=tkinter.Tk()
 
