@@ -7,7 +7,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/leedongseop/googleAPIjson
 client = speech.SpeechClient()
 
 
-with io.open('./WavFile/sample8sec.wav', "rb") as audio_file:
+with io.open('WavFile/sample8sec.wav', "rb") as audio_file:
     content = audio_file.read()
 
 audio = speech.RecognitionAudio(content=content)
