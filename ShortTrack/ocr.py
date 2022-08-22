@@ -10,8 +10,8 @@ import ocr_image_cut
 #gram json 경로
 #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:\googleCloudApiJson\shorttrack-ocr-f05377351806.json"
 
-#MAC json 경롷
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/leedongseop/googleAPIjson/shorttrack-ocr-c1a61c47c944.json"
+#MAC json 경로
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/leedongseop/googleAPIjson/shorttrack-ocr-c1a61c47c944.json"
 client = vision.ImageAnnotatorClient()
 
 #잘려진 frame 이미지 ocr 인식하기
@@ -51,14 +51,6 @@ for fileName in file_list:
         print('\n"{}"'.format(content)) #json 형식 보기 쉽게 하려고 만든 코드
         '''
 #test
-
-
-
-
-
-
-
-
 
 
 
