@@ -5,6 +5,7 @@ from google.cloud import vision
 import io
 import os
 import ocr_image_cut
+import ocr_score
 
 #구글 vision api 코드
 #gram json 경로
@@ -22,6 +23,7 @@ dir_path = 'cutted_images'
 file_list = os.listdir(dir_path)
 print(file_list)
 
+keyword = "최민정"
 i = 0
 for fileName in file_list:
 
@@ -39,11 +41,14 @@ for fileName in file_list:
         content = text.description
         #print(content) #단어별로 끊어서 출력
 
+        #원하는 키워드 입력시
         #ocr결과에 최민정이 있으면 ocr 결과 출력
-        if "최민정" in content:
+        if keyword in content:
             print("======================", fileName, "======================")
             print('Texts:')
             print(content)
+            ocr_score.ocrScore(fileName)
+
 
         '''
         content = content.replace(',','') #json 형식 보기 쉽게 하려고 만든 코드

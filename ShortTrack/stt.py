@@ -15,7 +15,7 @@ audio = speech.RecognitionAudio(content=content)
 #sample_rate_hertz 숫자를 잘 맞춰야함 값마다 출력값이 다르게 나옴
 config = speech.RecognitionConfig(
     encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-    sample_rate_hertz=42700,
+    sample_rate_hertz=16000,
     language_code="ko-KR",
 )
 
