@@ -14,7 +14,7 @@ video='C:/Users/KIM YAECHAN/Desktop/졸업작품/test_video.mp4'
 
 
 
-def Object_detection(images,target,threshhold):
+def Object_detection(target,threshhold):
     
     target_id_to_name = ['fall_down','skating','start', 'finish']
     target_name_to_id = {target_id_to_name[i]: i for i in range(len(target_id_to_name))}

@@ -1,8 +1,12 @@
+from objectDetection import Object_detection
+
+
 def highlight(count):
     #count는 frame_divide에서 프레임 수
 
     #하이라이트 스코어 1.OCR 2.STT 3.진폭 4.Odject Detection 5.total score
     score_list = [[0 for j in range(count)] for i in range(4)]
+    score_list[3] = Object_detection("fall_down",0.5)
 
     #여기서 각 수치 종합 후 
 

@@ -33,6 +33,8 @@ def opendir():
 	count,imagePath = frame_divide.frame_divide(video_path)
 	print("Finish divide")
 	
+	
+
 	#하이라이트 실행
 	total_score=highlight.highlight(count)
 	print(total_score)
