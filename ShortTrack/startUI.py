@@ -41,7 +41,7 @@ def opendir():
 	frame_merge.frame_merge(video_path,total_score,start_dir,cut_dir,finish_dir)
 
 	#폴더 열기
-	path_finish="./ShortTrack/outputVideo"#결과창
+	path_finish="./outputVideo"#결과창
 	path = os.path.realpath(path_finish)
 	os.startfile(path)
 #종료시

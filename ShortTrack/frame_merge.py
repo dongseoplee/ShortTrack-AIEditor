@@ -1,3 +1,4 @@
+import shutil
 from turtle import width
 from moviepy.editor import *
 
@@ -26,6 +27,11 @@ def frame_merge(video,total_score,start,sin,finish):
         highlight.append(VideoFileClip(video).subclip(score_frame-2,score_frame+2))
         for k in range(-2,2):
             total_score[score_frame+k]=0
-
-    output = concatenate_videoclips([Start,highlight[0],Sin,highlight[1],Sin,highlight[2],Finish],method="compose")        
+    output = concatenate_videoclips([Start,highlight[0]],method="compose")
+    for i in range(1,max_highlight):
+        output = concatenate_videoclips([output,Sin,highlight[i]],method="compose")
+    output = concatenate_videoclips([output,Finish],method="compose")   
+    if os.path.exists("/outputVideo/output.mp4"):  
+        shutil.rmtree("./__pycache__")
     output.write_videofile("./outputVideo/output.mp4")
+    
