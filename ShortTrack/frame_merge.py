@@ -1,52 +1,37 @@
 import shutil
-import cv2 #OpenCV fkdlqmfjfl
-import os   #파일 디렉토리 라이브러리
-import numpy as np
-from moviepy.editor import VideoFileClip
+from turtle import width
+from moviepy.editor import *
 
-
-def frame_merge(video,total_score):
-    print(total_score)
+def frame_merge(video,total_score,start,sin,finish):
+    #임시로 만들어 본거
     total_score[5]=5
-    #스코어 가장 큰거 찾기
-    for i in range(0,len(total_score)):
-        if (i==0):
-            score_frame=i
-        if(total_score[i]>total_score[i-1]):
-            score_frame=i
-
-    cap = cv2.VideoCapture(video)
-    width = cap.get(cv2.CAP_PROP_FRAME_WIDTH) # 또는 cap.get(3)
-    height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT) # 또는 cap.get(4)
-    fps = cap.get(cv2.CAP_PROP_FPS) # 또는 cap.get(5)
-    print('프레임 너비: %d, 프레임 높이: %d, 초당 프레임 수: %d' %(width, height, fps))
+    total_score[20]=6
+    total_score[10]=8
+    print(total_score)
+    #여기까지
     
-    fourcc = cv2.VideoWriter_fourcc(*'DIVX') # 코덱 정의
-    #동영상 이름
-    output_name="output.avi"
-    out = cv2.VideoWriter(output_name, fourcc, fps, (int(width), int(height))) # VideoWriter 객체 정의
+    #하이라이트 갯수
+    max_highlight=3
+    highlight = []
+    Start = VideoFileClip(start).subclip(0,1)
+    Sin=VideoFileClip(sin)
+    Finish=VideoFileClip(finish).subclip(0,1)
+    #스코어 가장 큰거 찾기
+    for j in range(0,max_highlight):        
+        for i in range(0,len(total_score)):
+            if (i==0):
+                score_frame=i
+            if(total_score[i]>total_score[i-1]):
+                score_frame=i
 
-    count=0
-    while cap.isOpened(): # cap 정상동작 확인
-        ret, frame = cap.read()
-        # 프레임이 올바르게 읽히면 ret은 True
-        if not ret:
-            print("프레임을 수신할 수 없습니다(스트림 끝?). 종료 중 ...")
-            break
-        if(count==score_frame):
-            temp=fps*3
-            while (cap.isOpened() and temp>0):
-                ret, frame = cap.read()
-                # 프레임이 올바르게 읽히면 ret은 True
-                if not ret:
-                    print("프레임을 수신할 수 없습니다(스트림 끝?). 종료 중 ...")
-                    break
-                out.write(frame)
-                count+=1
-                temp-=1
-        count+=1
-    # 작업 완료 후 해제
-
-    cap.release()
-    out.release()
-    cv2.destroyAllWindows()
+        highlight.append(VideoFileClip(video).subclip(score_frame-2,score_frame+2))
+        for k in range(-2,2):
+            total_score[score_frame+k]=0
+    output = concatenate_videoclips([Start,highlight[0]],method="compose")
+    for i in range(1,max_highlight):
+        output = concatenate_videoclips([output,Sin,highlight[i]],method="compose")
+    output = concatenate_videoclips([output,Finish],method="compose")   
+    if os.path.exists("/outputVideo/output.mp4"):  
+        shutil.rmtree("./__pycache__")
+    output.write_videofile("./outputVideo/output.mp4")
+    
