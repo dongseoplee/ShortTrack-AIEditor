@@ -38,7 +38,7 @@ def opendir():
 	#하이라이트 실행
 	total_score=highlight.highlight(count)
 	print(total_score)
-
+	return 0
 	#merge실행
 	frame_merge.frame_merge(video_path,total_score,start_dir,cut_dir,finish_dir)
 

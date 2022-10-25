@@ -29,7 +29,7 @@ for i in range(len(up_frequency)):         #int형으로 변환
 up_frequency = list(set(up_frequency))
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\박민규\Downloads\short-test-359905-6d7af470e878.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"./google_json/shorttrack-ocr-c1a61c47c944.json"
 
 client = speech.SpeechClient()
 
