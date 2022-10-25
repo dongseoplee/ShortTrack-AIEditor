@@ -3,13 +3,6 @@ from turtle import width
 from moviepy.editor import *
 
 def frame_merge(video,total_score,start,sin,finish):
-    #임시로 만들어 본거
-    total_score[5]=5
-    total_score[20]=6
-    total_score[10]=8
-    print(total_score)
-    #여기까지
-    
     #하이라이트 갯수
     max_highlight=3
     highlight = []
