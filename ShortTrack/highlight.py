@@ -1,5 +1,6 @@
 from objectDetection import Object_detection
 import OCR
+# import STT_detection
 
 
 def highlight(count):
@@ -8,6 +9,7 @@ def highlight(count):
     #하이라이트 스코어 1.OCR 2.STT 3.진폭 4.Odject Detection 5.total score
     score_list = [[0 for j in range(count)] for i in range(4)]
     score_list[0] =  OCR.ocr_recognition()
+    # score_list[1] =  STT_detection.STT_detection()
     score_list[3] = Object_detection()
 
 

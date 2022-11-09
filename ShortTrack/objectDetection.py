@@ -44,9 +44,10 @@ def Object_detection(target='fall_down',threshhold=0.5):
                     count_object+=1
 
         score.append(count_object)
-        results.show()  
+        #results.show()  
+    print("objectDetectionScore:",score)
         
     return score
 
-result=Object_detection()
-print(result)
+
+# print(Object_detection())
