@@ -104,7 +104,7 @@ def ocr_recognition():
 
         frameScore = len(imgKeywordSet)
         scoreList.append(frameScore)
-
+    print("OCR score",scoreList)
     return scoreList
 
 
