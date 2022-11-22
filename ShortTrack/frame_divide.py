@@ -24,7 +24,7 @@ def frame_divide(video):
                 if not ret:
                     break
                 
-                if(int(cap.get(1)) % 30 == 0):#30이 1초
+                if(int(cap.get(1)) % 24 == 0):#30이 1초
                     cv2.imwrite(imagePath + "temp" + "/frame%d.png" % count, image)
 
                     print('%d.png done' % count)
