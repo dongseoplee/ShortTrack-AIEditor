@@ -99,8 +99,7 @@ import moviepy.editor as mp
 def STT_detection(video="./VideoFile/30second.mp4",count=35):
 
     keyword = ["일본", "중국"]# 추출할 키워드들 
-
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"./google_json/short-stt-359905-6d7af470e878.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"./google_json/pure-anthem-369402-9bcdbdacbb25.json"
 
     client = speech.SpeechClient()
 

@@ -10,9 +10,8 @@ import os
 #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:\googleCloudApiJson\shorttrack-ocr-f05377351806.json"
 
 #MAC json 경로
-
 def ocr_recognition():
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google_json/shorttrack-ocr-c1a61c47c944.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google_json/shorttrack2-6f3b56f8c7de.json"
     client = vision.ImageAnnotatorClient()
     #잘려진 frame 이미지 ocr 인식하기
     #set, dic, hash, list
