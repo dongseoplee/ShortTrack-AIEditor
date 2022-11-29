@@ -12,7 +12,7 @@ import os
 #MAC json 경로
 
 def ocr_recognition():
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google_json\shorttrack2-637100724bf4.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google_json/shorttrack2-637100724bf4.json"
     client = vision.ImageAnnotatorClient()
     #잘려진 frame 이미지 ocr 인식하기
     #set, dic, hash, list
