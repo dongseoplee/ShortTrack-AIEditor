@@ -86,13 +86,16 @@ def ocr_recognition():
             # lap time socore under the 8.40time :10//// 8.5:8////8.7:6////8.
             lap_rank_socre = 0
             if (len(lapTime) != 0):
+                print(lapTime)
                 for lap_speed_rank in range(len(lapTime)):
                     lap_rank_score_temp = 10
                     temp2 = float(lapTime[lap_speed_rank])
                     if(temp2>100):
                         temp2 /= 100
                     lap_rank_score_temp -= temp2
-                    lap_rank_socre += lap_rank_score_temp ** 3
+                    if lap_rank_score_temp < 0:
+                        lap_rank_score_temp = 0 
+                    lap_rank_socre += lap_rank_score_temp ** 2
                     
 
             ranking.append(firstPlace)

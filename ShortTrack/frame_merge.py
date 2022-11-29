@@ -27,6 +27,7 @@ def frame_merge(video,total_score,start,sin,finish):
     start_index = 0
     final_index = 0
     index = 0
+    index_result = 0
     while(index<len(highlight_position)-1):
         start_index = highlight_position[index]
         final_index = start_index
@@ -37,10 +38,11 @@ def frame_merge(video,total_score,start,sin,finish):
                 break
         index += 1
         #이번 하이라이트 씬이 한개일 경우 앞뒤 2초
+        index_result += 1
         highlight.append(VideoFileClip(video).subclip(start_index-index_size,final_index+index_size))
 
     output = concatenate_videoclips([Start,highlight[0]],method="compose")
-    for i in range(1,len(highlight_position)-2):
+    for i in range(1,index_result):
         output = concatenate_videoclips([output,Sin,highlight[i]],method="compose")
     output = concatenate_videoclips([output,Finish],method="compose")   
     if os.path.exists("/outputVideo/output.mp4"):  
