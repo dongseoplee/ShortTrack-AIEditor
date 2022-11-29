@@ -1,5 +1,5 @@
 from objectDetection import Object_detection
-import OCR
+import ocr
 import STT_detection
 
 
